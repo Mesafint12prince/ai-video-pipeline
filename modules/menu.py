@@ -1,3 +1,6 @@
+from modules.script_generator import ScriptGenerator
+
+
 def start_menu():
 
     while True:
@@ -15,20 +18,44 @@ def start_menu():
         choice = input("\nSelect an option: ")
 
         if choice == "1":
-            print("Generate Script")
+
+            topic = input("\nEnter video topic:\n> ")
+
+            print("\nGenerating script...\n")
+
+            try:
+                generator = ScriptGenerator()
+
+                script, filepath = generator.generate_and_save(topic)
+
+                print("=" * 50)
+                print("GENERATED SCRIPT")
+                print("=" * 50)
+                print(script)
+
+                print("\n✅ Script generated successfully!")
+                print(f"📄 Saved to: {filepath}")
+
+            except Exception as e:
+                print(f"\n❌ Error: {e}")
+
+            input("\nPress Enter to continue...")
 
         elif choice == "2":
-            print("Generate Voice")
+            print("\nVoice Generator is not implemented yet.")
+            input("\nPress Enter to continue...")
 
         elif choice == "3":
-            print("Run Full Pipeline")
+            print("\nFull Pipeline is not implemented yet.")
+            input("\nPress Enter to continue...")
 
         elif choice == "4":
-            print("Settings")
+            print("\nSettings is not implemented yet.")
+            input("\nPress Enter to continue...")
 
         elif choice == "5":
-            print("Goodbye!")
+            print("\nGoodbye!")
             break
 
         else:
-            print("Invalid choice.")
+            print("\n❌ Invalid choice.")
