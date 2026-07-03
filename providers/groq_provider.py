@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from groq import Groq
 
 from providers.base_provider import BaseProvider
+from modules.settings_manager import load_settings
 
 load_dotenv()
 
@@ -21,9 +22,11 @@ class GroqProvider(BaseProvider):
 
     def generate(self, system_prompt: str, user_prompt: str) -> str:
 
+        settings = load_settings()
+
         response = self.client.chat.completions.create(
 
-            model="llama-3.3-70b-versatile",
+            model=settings["model"],
 
             messages=[
                 {
@@ -36,8 +39,8 @@ class GroqProvider(BaseProvider):
                 }
             ],
 
-            temperature=0.8,
-            max_tokens=600
+            temperature=settings["temperature"],
+            max_tokens=settings["max_tokens"]
         )
 
         return response.choices[0].message.content.strip()

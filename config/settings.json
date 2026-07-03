@@ -2,5 +2,9 @@
     "provider": "gemini",
     "model": "gemini-2.5-flash",
     "temperature": 0.8,
-    "max_tokens": 600
+    "max_tokens": 700,
+    "voice": {
+        "name": "en-US-JennyNeural",
+        "rate": "+10%"
+    }
 }

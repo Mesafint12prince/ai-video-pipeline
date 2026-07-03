@@ -1,4 +1,6 @@
 from modules.script_generator import ScriptGenerator
+from modules.voice_generator import VoiceGenerator
+from modules.file_selector import FileSelector
 
 
 def start_menu():
@@ -24,6 +26,7 @@ def start_menu():
             print("\nGenerating script...\n")
 
             try:
+
                 generator = ScriptGenerator()
 
                 script, filepath = generator.generate_and_save(topic)
@@ -37,25 +40,57 @@ def start_menu():
                 print(f"📄 Saved to: {filepath}")
 
             except Exception as e:
+
                 print(f"\n❌ Error: {e}")
 
             input("\nPress Enter to continue...")
 
         elif choice == "2":
-            print("\nVoice Generator is not implemented yet.")
+
+            script_path = FileSelector.choose_script()
+
+            if script_path:
+
+                print("\nGenerating voice...\n")
+
+                try:
+
+                    generator = VoiceGenerator()
+
+                    output = generator.generate_from_file(
+                        script_path
+                    )
+
+                    print("=" * 50)
+                    print("VOICE GENERATED")
+                    print("=" * 50)
+
+                    print(f"\n✅ Saved to:\n{output}")
+
+                except Exception as e:
+
+                    print(f"\n❌ Error:\n{e}")
+
             input("\nPress Enter to continue...")
 
         elif choice == "3":
+
             print("\nFull Pipeline is not implemented yet.")
+
             input("\nPress Enter to continue...")
 
         elif choice == "4":
+
             print("\nSettings is not implemented yet.")
+
             input("\nPress Enter to continue...")
 
         elif choice == "5":
+
             print("\nGoodbye!")
+
             break
 
         else:
+
             print("\n❌ Invalid choice.")
