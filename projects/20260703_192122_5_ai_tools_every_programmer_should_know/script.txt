@@ -1,0 +1,31 @@
+**(Visuals: Fast-paced montage of code flying, futuristic UI elements, a programmer looking intense but then smiling in relief. Upbeat, driving electronic music throughout.)**
+
+---
+
+**(0-3 seconds)**
+**VOICEOVER (Excited, rapid-fire):** Programmers, STOP coding the OLD way! Unlock superpowers NOW!
+
+**(Visuals: Dynamic title card: "5 AI Tools Every Programmer NEEDS!")**
+
+**VOICEOVER:** Here are 5 INSANE AI tools that will absolutely revolutionize your workflow and skyrocket your productivity!
+
+**(Visuals: Quick cut to GitHub Copilot demo – showing AI auto-completing complex code.)**
+**1. GitHub Copilot:** Your ultimate AI pair programmer! It writes code with you, suggests functions, and even debugs. Say goodbye to boilerplate, hello to blazing speed!
+
+**(Visuals: Quick cut to ChatGPT/GPT-4 interface – showing it explaining an algorithm or writing test cases.)**
+**2. ChatGPT / GPT-4:** Not just for chat! Ask it to explain algorithms, generate test cases, or write entire documentation. Your personal coding tutor, 24/7!
+
+**(Visuals: Quick cut to Mutable AI interface – showing code being optimized, refactored, or identifying issues.)**
+**3. Mutable AI:** Supercharge your code quality! This AI refactors messy code, identifies performance bottlenecks, and ensures best practices. Code reviews just got a massive upgrade!
+
+**(Visuals: Quick cut to Cody AI interface – showing it answering a specific question about a large, unfamiliar codebase.)**
+**4. Cody AI:** Ever dive into a HUGE codebase feeling lost? Cody AI is your intelligent guide! Ask it questions, understand context, and navigate complex projects like a true pro!
+
+**(Visuals: Quick cut to Replit AI in action – showing real-time code generation, error correction, and intelligent suggestions within the Replit IDE.)**
+**5. Replit AI:** Experience coding in the future! Integrated directly into the Replit IDE, this AI generates code, fixes bugs in real-time, and even helps you learn new concepts. An entire dev environment powered by intelligence!
+
+**(Visuals: Energetic montage of all tools, then a programmer looking amazed and empowered.)**
+**VOICEOVER:** These aren't just tools; they're game-changers! Stop wasting time, start innovating FASTER!
+
+**(Visuals: Text overlay: "Which one will you try FIRST? 👇" | Animated arrow pointing to comments | Like & Follow icons.)**
+**CALL TO ACTION:** Hit that LIKE button, share this with a dev friend, and tell me: which AI tool are you trying FIRST?! Follow for more tech hacks!

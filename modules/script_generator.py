@@ -1,8 +1,8 @@
 import os
 
 from providers import ProviderFactory
-
 from prompts.youtube_prompt import SYSTEM_PROMPT
+from modules.project_manager import ProjectManager
 
 
 class ScriptGenerator:
@@ -21,33 +21,20 @@ Topic:
 {topic}
 """
 
-        script = self.provider.generate(
+        return self.provider.generate(
             SYSTEM_PROMPT,
             user_prompt
         )
 
-        return script
-
     def save(
         self,
-        topic: str,
+        project: dict,
         script: str
     ) -> str:
 
-        os.makedirs(
-            "output",
-            exist_ok=True
-        )
-
-        filename = (
-            topic.lower()
-            .replace(" ", "_")
-            + "_script.txt"
-        )
-
         filepath = os.path.join(
-            "output",
-            filename
+            project["root"],
+            "script.txt"
         )
 
         with open(
@@ -58,19 +45,24 @@ Topic:
 
             file.write(script)
 
+        project["script"] = filepath
+
         return filepath
 
-    def generate_and_save(
+    def generate_project(
         self,
         topic: str
-    ):
+    ) -> dict:
+
+        project = ProjectManager.create(topic)
 
         script = self.generate(topic)
-        
-        filepath = self.save(
-            topic,
+
+        self.save(
+            project,
             script
         )
 
-        return script, filepath
-    
+        project["script_text"] = script
+
+        return project

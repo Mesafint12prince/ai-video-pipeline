@@ -1,13 +1,17 @@
-from modules.file_selector import FileSelector
+from modules.script_generator import ScriptGenerator
 from modules.voice_generator import VoiceGenerator
 
-path = FileSelector.choose_script()
 
-if path:
+topic = "5 AI tools every programmer should know"
 
-    generator = VoiceGenerator()
+script_generator = ScriptGenerator()
 
-    mp3 = generator.generate_from_file(path)
+project = script_generator.generate_project(topic)
 
-    print("\nVoice created successfully!")
-    print(mp3)
+voice_generator = VoiceGenerator()
+
+voice_generator.generate(project)
+
+print("\nPipeline completed successfully!\n")
+
+print(project)

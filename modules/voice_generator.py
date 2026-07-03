@@ -10,18 +10,18 @@ class VoiceGenerator:
 
     def __init__(self):
 
-        self.manager = VoiceManager()
+        manager = VoiceManager()
 
-        self.voice = self.manager.get_voice()
-        self.rate = self.manager.get_rate()
+        self.voice = manager.get_voice()
+        self.rate = manager.get_rate()
 
     def read_script(
         self,
-        script_path: str
+        project: dict
     ) -> str:
 
         with open(
-            script_path,
+            project["script"],
             "r",
             encoding="utf-8"
         ) as file:
@@ -50,25 +50,16 @@ class VoiceGenerator:
 
         await communicate.save(output_path)
 
-    def generate_from_file(
-
+    def generate(
         self,
-
-        script_path: str
-
+        project: dict
     ) -> str:
 
-        if not os.path.exists(script_path):
+        text = self.read_script(project)
 
-            raise FileNotFoundError(
-                f"Script not found:\n{script_path}"
-            )
-
-        text = self.read_script(script_path)
-
-        output_path = script_path.replace(
-            "_script.txt",
-            "_voice.mp3"
+        output_path = os.path.join(
+            project["root"],
+            "voice.mp3"
         )
 
         asyncio.run(
@@ -82,5 +73,7 @@ class VoiceGenerator:
             )
 
         )
+
+        project["voice"] = output_path
 
         return output_path

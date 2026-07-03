@@ -1,14 +1,13 @@
 from modules.script_generator import ScriptGenerator
 from modules.voice_generator import VoiceGenerator
-from modules.file_selector import FileSelector
-
+from modules.project_selector import ProjectSelector
 
 def start_menu():
 
     while True:
 
         print("\n==============================")
-        print(" AI VIDEO PIPELINE")
+        print("      AI VIDEO PIPELINE")
         print("==============================")
 
         print("1. Generate Script")
@@ -19,6 +18,9 @@ def start_menu():
 
         choice = input("\nSelect an option: ")
 
+        # -----------------------------
+        # Generate Script
+        # -----------------------------
         if choice == "1":
 
             topic = input("\nEnter video topic:\n> ")
@@ -29,65 +31,100 @@ def start_menu():
 
                 generator = ScriptGenerator()
 
-                script, filepath = generator.generate_and_save(topic)
+                project = generator.generate_project(topic)
 
-                print("=" * 50)
+                print("=" * 60)
                 print("GENERATED SCRIPT")
-                print("=" * 50)
-                print(script)
+                print("=" * 60)
+
+                print(project["script_text"])
 
                 print("\n✅ Script generated successfully!")
-                print(f"📄 Saved to: {filepath}")
+                print(f"📄 Saved to:\n{project['script']}")
 
             except Exception as e:
 
-                print(f"\n❌ Error: {e}")
+                print(f"\n❌ Error:\n{e}")
 
             input("\nPress Enter to continue...")
 
+        # -----------------------------
+        # Generate Voice
+        # -----------------------------
+               # -----------------------------
+        # Generate Voice
+        # -----------------------------
         elif choice == "2":
 
-            script_path = FileSelector.choose_script()
+            project = ProjectSelector.choose()
 
-            if script_path:
+            if project is None:
+                input("\nPress Enter to continue...")
+                continue
 
-                print("\nGenerating voice...\n")
+            print("\nGenerating voice...\n")
 
-                try:
+            try:
 
-                    generator = VoiceGenerator()
+                generator = VoiceGenerator()
 
-                    output = generator.generate_from_file(
-                        script_path
-                    )
+                output = generator.generate(project)
 
-                    print("=" * 50)
-                    print("VOICE GENERATED")
-                    print("=" * 50)
+                print("=" * 60)
+                print("VOICE GENERATED")
+                print("=" * 60)
 
-                    print(f"\n✅ Saved to:\n{output}")
+                print(f"\n🎤 Saved to:\n{output}")
 
-                except Exception as e:
+            except Exception as e:
 
-                    print(f"\n❌ Error:\n{e}")
+                print(f"\n❌ Error:\n{e}")
 
             input("\nPress Enter to continue...")
-
         elif choice == "3":
 
-            print("\nFull Pipeline is not implemented yet.")
+            topic = input("\nEnter video topic:\n> ")
+
+            print("\nRunning full pipeline...\n")
+
+            try:
+
+                script_generator = ScriptGenerator()
+                voice_generator = VoiceGenerator()
+
+                project = script_generator.generate_project(topic)
+
+                voice_generator.generate(project)
+
+                print("=" * 60)
+                print("PIPELINE COMPLETED")
+                print("=" * 60)
+
+                print(f"\n📁 Project Folder:\n{project['root']}")
+                print(f"\n📄 Script:\n{project['script']}")
+                print(f"\n🎤 Voice:\n{project['voice']}")
+
+            except Exception as e:
+
+                print(f"\n❌ Error:\n{e}")
 
             input("\nPress Enter to continue...")
 
+        # -----------------------------
+        # Settings
+        # -----------------------------
         elif choice == "4":
 
-            print("\nSettings is not implemented yet.")
+            print("\n⚙️ Settings module is coming soon.")
 
             input("\nPress Enter to continue...")
 
+        # -----------------------------
+        # Exit
+        # -----------------------------
         elif choice == "5":
 
-            print("\nGoodbye!")
+            print("\n👋 Goodbye!")
 
             break
 
